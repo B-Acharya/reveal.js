@@ -17,10 +17,10 @@
 		<div class="reveal">
 			<div class="slides">
 				<div data-id="1" class="header-left" data-auto-animate>
-					Probabilistic Learning for Visual Computing	
+					SAIL Colloquium 
 				</div>
 				<div data-id="2" class="header-right" data-auto-animate>
-					<em>Bhargav Acharya</em> &bullet; 22. May 2024
+					<em>Bhargav Acharya</em> &bullet; 15. May 2024
 				</div>
 				<div class="footer-left">
 					<img src="Images/1024px-Universität_Bielefeld_Logo.svg" height="25" style="margin-right: 10px;">
@@ -28,23 +28,20 @@
 				<!-- Intro -->
 					<!-- TODO find better background style -->
 				<section data-state="titleslide" data-auto-animate >
-						<h3>
-							<div data-id="1" style="display: inline;">
-								Probabilistic Learning for Visual Computing	
-							</div>
-						</h3>
 						<h2>
-							Probabilistic Regression for Visual Tracking <br>
-		
-							<!-- Heart Rate Estimation From Videos -->
+							<div data-id="1" style="display: inline;">
+								SAIL Colloquium
+							</div>
 						</h2>
 						<h3>
-							Martin Danelljan, Luc Van Gool and Radu Timofte
+							Generalization of Video-Based Heart Rate Estimation Methods To
+Low Illumination and Elevated Heart Rates
+							<!-- Heart Rate Estimation From Videos -->
 						</h3>
 						<h4>
 							<div data-id="2"> Bhargav Acharya </div>
 						<h4>
-							<div data-id="2"> 22 May 2024 </div>
+							<div data-id="2"> 15 May 2024 </div>
 						</h4>
 				</section>
 				<!-- <section data-auto-animate class="text-left"> -->
@@ -55,153 +52,263 @@
 				<!--Recap-->
 				<section data-auto-animate class="text-left">
 					<h3 > 
-						<div data-id="3"> Introduction </div>
+						<div data-id="3" style="display: inline;"> Introduction </div>
 					</h3>
 					<ul> 
-					  <li class="fragment" data-fragment-index="1" > Visual tracking </li>
+					  <li class="fragment" data-fragment-index="1" > Photophlethosmogrpahy(PPG) </li>
+					  <figure> 
+					  <div class="fragment" data-fragment-index="1">
+							<a href="https://www.google.com/url?sa=i&url=https%3A%2F%2Fmakeagif.com%2Fgif%2Fphotoplethysmogram-pulse-meter-Tr2Rrc&psig=AOvVaw3Ew1IMqFg3uq6n_tYijxf8&ust=1715763597800000&source=images&cd=vfe&opi=89978449&ved=0CBEQjRxqFwoTCNj8j9DjjIYDFQAAAAAdAAAAABAE" >
+								<img data-src="./Images/finger_rppg.gif">
+							</a>
+					  </div>
+					  </figure>
+					  <li class="fragment" > Remotephotophlethosmogrpahy(rPPG)</li>
+					</ul>
+					<figure class="image-right">
+						<a href="https://www.uni-bielefeld.de/fakultaeten/technische-fakultaet/arbeitsgruppen/multimodal-behavior-processing/research/rppg/" >
+							<img class="fragment r-strech" data-src="./Images/rppg_mobile.jpeg" class="image-right" >
+						</a>
+					</figure>
 					<!-- <div class="block fragment" > -->
 						<!-- Goal: Explore how changes in illumination impact the methods. -->
 					<!-- </div> -->
-						<li data-id="3" class="fragment"> Regression problem</li>
-					</ul>
-					  <figure class="image-right"> 
-					  <div class="fragment" data-fragment-index="1">
-								<img data-src="./Images/pvc-1.png" height="400" width="400">
-					  </figure>
-						
-					<aside class="notes">
-						Visual object tracking is the task of estimating the state
-of a target object in each frame of a video sequence.
-					</aside>
+				</section>
+
+				<section data-auto-animate class="text-left">
+					<h3 > 
+						<div data-id="3" style="display: inline;"> Introduction </div>
+					</h3>
+					<center>
+						<figure>
+							<img data-src="./Images/Overview_deep.png" class="r-frame">
+							<figcaption><small> Fig 1. Predicting HR from videos (Dasari et al., 2021) </small></figcaption>
+						</figure>
+					</center>
+				</section>
+
+				<section data-auto-animate >
+					<h3 > 
+						<div data-id="3" style="display: inline;"> Challenges in rPPG </div>
+					</h3>
 				</section>
 				<section data-auto-animate>
-					<h4 data-id="3"> Regression problem</h4>
-					<div class="fragment"	>
-						$$ f_\theta: \mathcal{X} \rightarrow \mathcal{Y} $$
-						$$ Given: \{(x_i,y_i)\}_i \subset \mathcal{X} \times \mathcal{Y}$$
+					<h3 > 
+						<div data-id="3" style="display: inline;"> Challenges in rPPG </div>
+					</h3>
+					<div class="icon-set">
+						<div class="icon-item fragment fade-in-then-semi-out">
+							<div class="icon">
+								<div class="symbol">🏃‍♂️</div> <!-- Motion -->
+							</div>
+							<div class="subtitle">Motion</div>
+						</div>
+						<div class="icon-item fragment">
+							<div class="icon">
+								<div class="symbol">💡</div> <!-- Illumination -->
+							</div>
+							<div class="subtitle">Illumination</div>
+						</div>
+						<div class="icon-item fragment fade-in-then-semi-out">
+							<div class="icon">
+								<div class="symbol">👨🏽</div> <!-- Skin Tone -->
+							</div>
+							<div class="subtitle">Skin Tone</div>
+						</div>
+						<div class="icon-item fragment fade-in-then-semi-out">
+							<div class="icon">
+								<div class="symbol">📁</div> <!-- Compression -->
+							</div>
+							<div class="subtitle">Compression</div>
+						</div>
+						<div class="icon-item fragment ">
+							<div class="icon">
+								<div class="symbol">❤️‍🩹</div> <!-- High Heart Rates -->
+							</div>
+							<div class="subtitle">High Heart Rates</div>
+						</div>
 					</div>
-					<div class="fragment">
-						 $f_\theta$ (deep neural network with weights $\theta$)
-					</div>
-					<div class="fragment">
-						 $$L(\theta) = \sum_i \ell(f_\theta(x_i), y_i)$$
-					</div>
-					<div class="fragment">
-						 $L^p$ family, $\ell(y, y') = \|y - y'\|_p^p$.
-					</div>
-
-				</section>
-				<section data-markdown>
-					<textarea data-template>
-						### Regression for visual tracking
-						- Confidence-based regression: <!-- .element: class="fragment"  -->
-							- Learn a function  $ s_\theta$ predicts a scalar confidence score $s_\theta(y,x) \in \reals$ given an output-input pair 
-						- Final estimate $ y^* $ <!-- .element: class="fragment" --> 
-						`$$ f(x) = \argmax_{y\in \mathcal{Y}} s_\theta(y,x) $$`
-						- Finding $ s_\theta $ <!-- .element: class="fragment" -->
-						`$$ L(\theta; x_i, y_i) = 
-						\int_\mathcal{Y}\ell\big(s_\theta(y,x_i), a(y,y_i)\big)dy $$`
-					</textarea>
-					<aside class="notes">
-						confidence can capture uncertainities
-						exploit symetries from x and y
-					</aside>
-				</section>
-				<section data-markdown>
-					<textarea data-template>
-						### Regression for visual tracking
-						- Discriminative Correlation Filter (DCF) approaches:
-						`$$ s_\theta(y,x) = (w_\theta  * \phi(x))(y) $$`	
-						`$$\ell(s,a) = (s - a)^2$$`
-						`$$a(y,y_i) = e^{-\frac{\|y - y_i\|^2}{2\sigma^2}}$$`
-					</textarea>
+					<!-- <figure> -->
+						<!-- <img data-src="./Images/challenges.png" -->
+					<!-- </figure> -->
 				</section>
 
-				<section>
-
-				<section data-markdown> 
-					<textarea data-template>
-						### Probabilistic regression model
-						- Estimate the predictive probability distribution <!-- .element: class="fragment"  -->
-						`$$p(y|x, \theta) = \frac{1}{Z_\theta(x)} e^{s_\theta(y,x)} \,,\; Z_\theta(x) = \int e^{s_\theta(y,x)} dy $$`
-						- Use KL divergance as a loss function <!-- .element: class="fragment"  --> 
-						`$$ KL(p(\cdot|y_i),p(\cdot|x_i,\theta)) = \int p(y|y_i) \log \frac{p(y|y_i)}{p(y|x_i,\theta)} dy \nonumber $$`
-						`$$ log \left(\int e^{s_\theta(y,x_i)} dy\right) - \int s_\theta(y,x_i) p(y|y_i)  dy \,. $$`
-					</textarea>
-				</section>
+				<section data-auto-animate>
 					<section>
-						<h4> NLL </h4>
-						$$ -\log p(y_i|x_i, \theta) = \log\left(\int e^{s_\theta(y,x_i)} dy\right) - s_\theta(y_i,x_i) \,.$$
+					<h3 > 
+						<div data-id="4" style="display: inline;"> C-PPG </div>
+					</h3>
+					<figure>
+						<img src="./Images/protocol.png" class="r-frame" height="300">
+						<figcaption><small> Fig 2. Data collection protocol </small></figcaption>
+					</figure>
+					</section>
+					<section>
+						<figure>	
+							<img src="./Images/hr-dist.png", height="400", class="r-frame">
+							<figcaption><small> Fig 3. HR Distribution </small></figcaption>
+						</figure>
 					</section>
 				</section>
-				<section>
-						<div class="r-stack">
-							<img src="./Images/pvc-2.png">
-							<img class="fragment" src="./Images/pvc-3.png">
+
+				<!--Slide Datasets-->
+				<section data-auto-animate>
+					<div class="columns">
+						<div class="column">
+							<ul>
+								<li data-id="4"> C-PPG </li>
+								<ul>
+									<li > 45 participants </li>
+									<li > 4 scenarios </li>
+								</ul>
+							</ul>
 						</div>
+						<div class="column">
+							<ul>
+								<li data-id="5"> Public Dataset</li>
+								<ul>
+									<li > COHFACE (Heusch et al., 2016) </li>
+									<ul>
+										<li>40 participants </li>
+										<li >2 scenarios </li>
+									</ul>
+									<li > PURE (Sticker et al., 2014)</li>
+									<ul>
+										<li> 10 participants </li>
+										<li > 6 scenarios </li>
+									</ul>
+								</ul>
+							</ul>
+						</div>
+					  </div>
 				</section>
-				<section>	
-				<section class="text-left">
-					<h4> Experiments </h4>
+				</section>
+				<section >
+					<H4> Methods</H4>
+					<div class="columns">
+						<div class="column">
 					<ul>
-						<li>
-							Target Center Regression (TR)
-						</li>
-						<li>
-							Bounding Box Regression (BBR)	
-						</li>
-						<li class="fragment">
-							Baseline: DiMP
-							$$TR:  s_\theta^\text{tc}(y^\text{tc},x) = (w_\theta * \phi_\theta(x))(y^\text{tc})$$
-							BBR: ATOM  
-						</li>
-						<li class="fragment">
-							Probabilistic DiMP <br>
-							TR: Grid sampling <br>
-							BBR: Monte Carlo Integration sampling
-						</li>
+						<li> Deep Learning</li>
+						<ul>
+							<li> 	Physnet  (Yu et al., 2019)    </li>
+							<li>     rPPGnet  (Yu et al., 2019)    </li>
+							<li>	 Physformer (Yu et al., 2023)  </li>
+							<li>	 DeepPhys  (Chen et al., 2018) </li>
+							<li>	 TS-CAN ( Liu et al., 2020)    </li>
+						</ul>
+					</ul>
+						</div>
+					<div class="column">
+					<ul>
+						<li> Classical methods</li>
+						<ul>
+							<li> ICA (Poh et al., 2010)         </li>
+							<li> POS (Wang et al., 2016)        </li>
+							<li> CHROM (Haan et al., 2013)      </li>
+							<li> GREEN (Verkruysse et al., 2008)</li>
+						</ul>
+					</ul>
+					</div>
+				</section>
+
+				<!--Slide 14-->
+				<section data-auto-animate class="text-left">
+					<h3>Experiments</h3>
+						<ul>
+						  <li class data-fragment-index="1" data-id="6">Exp 1: Evaluation of Classical and DL Methods on all Datasets </li>
+						  <li class data-fragment-index="2" data-id="7">Exp 2: Generalization of DL Models Trained on Public Datasets to C-PPG </li>
+						</ul>
+				</section>
+				<section data-auto-animate >
+					<section data-auto-animate>
+						<ul class="text-left">
+							<li data-id="6" >Exp 1: Evaluation of Classical and DL Methods on all Datasets </li>
+							<ul>
+								<li> DL methods: 10 fold cross validation </li>
+							</ul>
+						</ul>
+						<figure>
+							<img data-src="./Images/exp1.png", height="400">
+							<figcaption><small> Table 1. 10 fold cross validation on all datasets </small></figcaption>
+						</figure>
+						<!-- <div> -->
+							<!-- <img data-src="./Images/nested-cv.png", height="400"> -->
+						<!-- </div> -->
+					</section>
+					<section>
+						<figure>
+							<img data-src="./Images/exp1-fig2.png", height="400", class="r-frame">
+							<figcaption><small> Fig 3. MAE for different scenarios of the dataset </small></figcaption>
+						</figure>
+					</section>
+					<!-- <section data-auto-animate> -->
+						<!-- <ul class="text-left"> -->
+							<!-- <li data-id="6" >Exp 1: Evaluation of Classical and DL Methods on all Datasets </li> -->
+						<!-- </ul> -->
+						<!-- <div> -->
+							<!-- <img data-src="./Images/exp1-cmbp.png", height="400"> -->
+							<!-- <h4>Table 2. MAE for methods on C-PPG for different scenarios </h4> -->
+						<!-- </div> -->
+					<!-- </section> -->
+				</section>
+
+				<section data-auto-animate >
+					<section data-auto-animate class="text-left">
+						<ul>
+						  	<li data-id="7">Exp 2: Generalization of DL Models Trained on Public Datasets to C-PPG </li>
+							<ul>
+								<li> Train on COHFACE and PURE</li>
+								<li> Test on C-PPG</li>
+							</ul>
+						</ul>
+					</section>
+					<section data-auto-animate>
+						<ul>
+						  	<li data-id="7">Exp 2: Generalization of DL Models Trained on Public Datasets to C-PPG </li>
+						</ul>
+						<figure>
+							<img data-src="./Images/exp2.png", height="400">
+							<figcaption><small> Table 2. MAE of deep learning and classical tested on C-PPG </small></figcaption>
+						</figure>
+					</section> 
+				</section>
+
+				<section class="text-left">
+					<h3> Key points</h3>
+					<ul>
+						<li>No overall best model. </li>
+						<li>The results do not have a overall trend for low and high illumination. </li>
+						<li>The classical methods perform well for our dataset. </li>	
+						<li>Generalisation of models trained on public datasets is good for specific models but still lower than classical methods.</li>
 					</ul>
 				</section>
-					<section>
-						<h3> DiMP </h3>
-						<img class="r-frame" src="./Images/pvc-dimp.png">
-					</section>
-					<section>
-						<h3> ATOM </h3>
-						<img class="r-frame" src="./Images/pvc-atom.png">
-					</section>
-				</section>
-				<section>
-					<h3> Results </h3>
-					<figure>
-						<img class="r-frame" src="./Images/pvc-4.png">
-						<figcaption>Tab1. Analysis of four different regression models</figcaption>
-					</figure>
-				</section>
-				<section>
-					<h3> Results </h3>
-					<figure>
-						<img class="r-frame" src="./Images/pvc-6.png">
-						<figcaption>Fig2. Impact of label uncertainty four different regression models</figcaption>
-					</figure>
-				</section>
-				<section>
-					<h3>Results </h3>
-					<div class="r-stack">
-						<img src="./Images/pvc-7.png">
-						<img class="fragment" src="./Images/pvc-8.png">
-						<img class="fragment" src="./Images/pvc-9.png">
-						Performance comparisons with state-of-the-art
-					</div>
-					
-				</section>
 
+				<section class="text-left">
+					<h3>Next steps</h3>
+					<ul>
+						<li> Continue collection of the dataset. </li>
+						<li> Explore uncertainty estimation for rPPG/ HR. </li>
+						<li> New Dataset with skin-tone variation. </li>
+						<li> Use the HR for other downstream tasks. </li>
+					</ul>
+				</section>
 				
+				<!-- <section data-auto-animate class="text-left"> -->
+					<!-- <h4> Estimating the frequency response</h4> -->
+					<!-- <ul> -->
+						<!-- <li> Periodogram</li> -->
+						<!-- <li> Welch</li> -->
+						<!-- <img src="./Images/welch_fft.svg" , height="400"> -->
+					<!-- </ul> -->
+				<!-- </section> -->
+				<!-- <section data-auto-animate> -->
+					<!-- <h3 data-id = 11 > Next steps</h3> -->
+				<!-- </section> -->
 				</section>
 				<!-- <section data-background-iframe="https://www.uni-bielefeld.de/fakultaeten/technische-fakultaet/arbeitsgruppen/multimodal-behavior-processing/" data-background-interactive> -->
 				<section class="r-fit-text">
 					<h3> Thank You for your attention!</h3>
-					<!-- Email: bacharya@techfak.uni-bielefeld.de -->
+					Email: bacharya@techfak.uni-bielefeld.de
 				</section>
 				<section class="text-left">
 					<h> References</h>
@@ -245,7 +352,6 @@ of a target object in each frame of a video sequence.
 		<script src="plugin/notes/notes.js"></script>
 		<script src="plugin/markdown/markdown.js"></script>
 		<script src="plugin/highlight/highlight.js"></script>
-		<script src="plugin/math/math.js"></script>
 		<script>
 			// More info about initialization & config:
 			// - https://revealjs.com/initialization/
@@ -272,7 +378,7 @@ of a target object in each frame of a video sequence.
             	height: 720,
 
 				// Learn about plugins: https://revealjs.com/plugins/
-				plugins: [ RevealMarkdown, RevealHighlight, RevealNotes, RevealMath.KaTeX ]
+				plugins: [ RevealMarkdown, RevealHighlight, RevealNotes ]
 			});
 		</script>
 	</body>

@@ -1,0 +1,319 @@
+<!doctype html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+		<title>reveal.js</title>
+
+		<link rel="stylesheet" href="dist/reset.css">
+		<link rel="stylesheet" href="dist/reveal.css">
+		<link rel="stylesheet" href="dist/theme/benjamin.css">
+
+		<!-- Theme used for syntax highlighted code -->
+		<link rel="stylesheet" href="plugin/highlight/monokai.css">
+	</head>
+	<body>
+		<div class="reveal">
+			<div class="slides">
+				<div data-id="1" class="header-left" data-auto-animate>
+					RC: rPPG estimation from videos
+				</div>
+				<div data-id="2" class="header-right" data-auto-animate>
+					<em>Bhargav Acharya</em> &bullet; 11. Jan 2024
+				</div>
+				<div class="footer-left">
+					<img src="Images/1024px-Universität_Bielefeld_Logo.svg" height="25" style="margin-right: 10px;">
+				</div>
+				<!-- Intro -->
+					<!-- TODO find better background style -->
+				<section data-state="titleslide" data-auto-animate >
+						<h2>
+							<div data-id="1" style="display: inline;">RC: rPPG estimation from videos </div>
+						</h2>
+						<h4>
+							<div data-id="2"> Bhargav Acharya </div>
+						<h4>
+							<div data-id="2"> 11 Jan 2024 </div>
+						</h4>
+				</section>
+				<section data-auto-animate class="text-left">
+					<h3 > 
+						<div data-id="3" style="display: inline;"> Recap</div>
+					</h3>
+				</section>
+				<!--Recap-->
+				<section data-auto-animate class="text-left">
+					<h3 > 
+						<div data-id="3" style="display: inline;"> Recap</div>
+					</h3>
+					<ul> 
+					  <li>Evaluating deep learning and classical methods for the task of rPPG estimation</li>
+					  <li class="fragment" data-id="4"> MBP-PPG dataset </li>
+					  <li class="fragment" data-id="5">Public datasets</li>
+					</ul>
+					<div class="block fragment" >
+						Goal: Explore how changes in illumination impact the methods.
+					</div>
+				</section>
+				<!--Slide Datasets-->
+				<section>
+				<section data-auto-animate>
+					<div class="columns">
+						<div class="column">
+							<ul>
+								<li data-id="4"> MBP-PPG dataset</li>
+								<ul>
+									<li > 47 participants </li>
+									<li > 4 scenarios </li>
+								</ul>
+							</ul>
+						</div>
+						<div class="column">
+							<ul>
+								<li data-id="5"> Public dataset</li>
+								<ul>
+									<li > COHFACE </li>
+									<ul>
+										<li>40 participants </li>
+										<li >2 scenarios </li>
+									</ul>
+									<li > PURE </li>
+									<ul>
+										<li> 10 participants </li>
+										<li > 6 scenarios </li>
+									</ul>
+								</ul>
+							</ul>
+						</div>
+					  </div>
+				</section>
+				<section>
+					<div >
+					  <img src="./Images/hr-dist.png", height="400", class="r-frame">
+					</div>
+				</section>
+				</section>
+				<section class="text-left">
+					<H4> Methods</H4>
+					<div class="columns">
+						<div class="column">
+					<ul>
+						<li> Deep Learning</li>
+						<ul>
+							<li> DeepPhys</li>
+							<li> Ts-CAN</li>
+							<li> Physnet</li>
+							<li> rPPGNet</li>
+							<li> Physformer</li>
+						</ul>
+					</ul>
+						</div>
+					<div class="column">
+					<ul>
+						<li> Classical methods</li>
+						<ul>
+							<li> POS</li>
+							<li> ICA</li>
+							<li> CHROM</li>
+							<li> GREEN</li>
+						</ul>
+					</ul>
+					</div>
+					
+				</section>
+
+				<!--Slide Experiments-->
+				<section data-auto-animate class="text-left">
+					<h3>Experiments</h3>
+						<ul>
+						  <li class="fragment " data-fragment-index="1" data-id="6">Exp 1: Evaluation of Classical and DL Methods on all Datasets </li>
+						  <li class="fragment" data-fragment-index="2" data-id="7">Exp 2: Generalization of DL Models Trained on Public Datasets to C-PPG </li>
+						  <li class="fragment" data-fragment-index="3" data-id="8">Exp 3: C-PPG as a Pretraining Dataset for DL Methods </li>
+						</ul>
+				</section>
+				<section data-auto-animate >
+					<section data-auto-animate>
+						<ul class="text-left">
+							<li data-id="6" >Exp 1: Evaluation of Classical and DL Methods on all Datasets </li>
+							<ul>
+								<li> DL methods: Leave 10 out nested cross validation </li>
+							</ul>
+						</ul>
+						<div>
+							<img data-src="./Images/nested-cv.png", height="400">
+						</div>
+					</section>
+					<section data-auto-animate>
+						<ul class="text-left">
+							<li data-id="6" >Exp 1: Evaluation of Classical and DL Methods on all Datasets </li>
+						</ul>
+						<div>
+							<img data-src="./Images/exp1-alldatasets.png", height="400">
+							<h4>Table 1. MAE for all datasets</h4>
+						</div>
+					</section>
+					<section data-auto-animate>
+						<ul class="text-left">
+							<li data-id="6" >Exp 1: Evaluation of Classical and DL Methods on all Datasets </li>
+						</ul>
+						<div>
+							<img data-src="./Images/exp1-cmbp.png", height="400">
+							<h4>Table 2. MAE for methods on C-PPG for different scenarios </h4>
+						</div>
+					</section>
+
+
+				</section>
+				<section data-auto-animate >
+					<section data-auto-animate class="text-left">
+						<ul>
+						  	<li data-id="7">Exp 2: Generalization of DL Models Trained on Public Datasets to C-PPG </li>
+							<ul>
+								<li> Find the number of epochs to train for and retrain on the whole dataset</li>
+								<li> Train dataset: COHFACE and PURE</li>
+								<li> Test dataset: C-PPG</li>
+							</ul>
+						</ul>
+					</section>
+					<section data-auto-animate>
+						<ul>
+						  	<li data-id="7">Exp 2: Generalization of DL Models Trained on Public Datasets to C-PPG </li>
+						</ul>
+						<div>
+							<img data-src="./Images/exp2.png", height="400">
+							<h4>Table 3. DL models trained on public datasets evaluated on C-PPG dataset</h4>
+						</div>
+					</section> 
+				</section>
+
+				<section data-auto-animate >
+					<section data-auto-animate class="text-left">
+						<ul>
+						  	<li data-id="8">Exp 3: C-PPG as a Pretraining Dataset for DL Methods </li>
+							<ul>
+								<li> Find the number of epochs to train for and retrain on the whole dataset</li>
+								<li> Train dataset: C-PPG</li>
+								<li> Test dataset: COHFACE and PURE </li>
+							</ul>
+						</ul>
+					</section>
+					<section data-auto-animate>
+						<ul>
+						  	<li data-id="8">Exp 3: C-PPG as a Pretraining Dataset for DL Methods </li>
+						</ul>
+						<div>
+							<img data-src="./Images/exp3.png", height="400">
+							<h4>Table 4. DL models trained on C-PPG dataset evaluated on public datasets</h4>
+						</div>
+					</section> 
+				</section>
+				<section class="text-left">
+					<h3> Key points </h3>
+					<ul>
+						<li>The results don not have a overall trend for low and high illumination </li>
+						<li>The classical methods perform extremely well in the case of our dataset </li>	
+						<li>Generalisation of models trained on public datasets is good for specific models but still lower than classical methods</li>
+						<li>Our dataset does not work as a pre-training dataset</li>	
+					</ul>
+
+				</section>
+				<section data-background-image=./Images/thisisfine.gif 
+						data-background-interactive=false class="r-stretch">
+				</section>
+				<section class="text-left">
+					<div class="r-stack">
+						<img class="r-frame" src="./Images/cmbp-cohface-deephys.svg">
+						<img class="fragment r-frame" src="./Images/cohface_deepphys.svg">
+					</div>
+				</section>
+
+				<section data-auto-animate class="text-left">
+					<h3> New Strategy </h3>
+						<ul>
+							<li> Deep learning methods</li>
+							<li> Classical methods</li>
+						</ul>
+				</section>
+
+				<section data-auto-animate class="text-left">
+					<h3> New Strategy </h3>
+						<ul>
+							<li> Deep learning methods</li>
+							<ul>
+								<li > Early stopping </li>
+							</ul>
+							<li> Classical methods</li>
+							<ul>
+								<li > Explore the ground truth heart rates</li>
+							</ul>
+						</ul>
+				</section>
+				<section data-auto-animate class="text-left">
+					<h4> Estimating the frequency response</h4>
+					<ul>
+						<li> Periodogram</li>
+						<li> Welch</li>
+						<img src="./Images/welch_fft.svg" , height="400">
+					</ul>
+				</section>
+				<!-- <section data-auto-animate> -->
+					<!-- <h3 data-id = 11 > Next steps</h3> -->
+				<!-- </section> -->
+				<section> 
+					<h3>  Questions? </h3>
+				</section>
+				<section data-auto-animate class="text-left">
+					<h3 data-id = 11 > Next steps</h3>
+					<ul>
+						<li> Survey paper on rPPG estimation methods</li>
+						<li> rPPG for videos from mobile phones</li>
+						<ul>
+							<li> Dataset: DST and VIPL</li>
+							<li> ACIII ? </li>
+						</ul>
+					</ul>
+				</section>
+				<section>
+					<h3> Thank You!</h3>
+				</section>
+				<section data-background-image="./Images/questions.gif" data-background-size="contain"> 
+				</section>
+			</div>
+		</div>
+
+		<script src="dist/reveal.js"></script>
+		<script src="plugin/notes/notes.js"></script>
+		<script src="plugin/markdown/markdown.js"></script>
+		<script src="plugin/highlight/highlight.js"></script>
+		<script>
+			// More info about initialization & config:
+			// - https://revealjs.com/initialization/
+			// - https://revealjs.com/config/
+			Reveal.initialize({
+				controls: true,
+            	controlsTutorial: false,
+            	progress: false,
+            	slideNumber: "c",
+            	hashOneBasedIndex: false,
+            	hash: true,
+            	embedded: false,
+            	showNotes: false,
+            	transition: "none",
+            	transitionSpeed: "default",
+            	backgroundTransition: "fade",
+            	pdfSeparateFragments: true,
+            	autoAnimateDuration: 0.3,
+				autoAnimateEasing: 'ease-out',
+				autoAnimatedUnmatched: false,
+
+            	margin: 0.04,
+            	width: 1280,
+            	height: 720,
+
+				// Learn about plugins: https://revealjs.com/plugins/
+				plugins: [ RevealMarkdown, RevealHighlight, RevealNotes ]
+			});
+		</script>
+	</body>
+</html>
